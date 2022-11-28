@@ -2,15 +2,19 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateHeroDto } from './dto/create-hero.dto';
-import { Hero } from './schema/hero.schema';
+import { Hero, HeroDocument } from './schema/hero.schema';
 
 @Injectable()
 export class HeroService {
-  constructor(@InjectModel("HeroModel") private heroModel: Model<Hero>){}
+  constructor(@InjectModel('Hero') private heroModel: Model<HeroDocument>){}
 
   async create(createHeroDto: CreateHeroDto): Promise<Hero> {
-    const createdHero = new this.heroModel(createHeroDto);
-    return createdHero.save();
+    console.log(`Inside service: ${createHeroDto.name}`);
+    const hero = new this.heroModel({
+      name: createHeroDto.name
+    });
+    console.log(`Inside service: ${hero.id}`);
+    return hero.save();
   }
 
   async findById(id: string): Promise<Hero> {

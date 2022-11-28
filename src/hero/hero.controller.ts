@@ -19,6 +19,9 @@ export class HeroController {
 
   @Post()
   async create(@Body() createHeroDto: CreateHeroDto): Promise<Hero> {
-    return await this.heroService.create(createHeroDto);
+    console.log(`Before calling service: ${createHeroDto.name}`);
+    const createdHero = await this.heroService.create(createHeroDto);
+    console.log(`Returned object: ${createdHero.name}`);
+    return createdHero;
   }
 }

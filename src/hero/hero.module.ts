@@ -5,7 +5,7 @@ import { HeroService } from './hero.service';
 import { HeroSchema } from './schema/hero.schema';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: "HeroModel", schema: HeroSchema }])],
+  imports: [MongooseModule.forFeature([{ name: 'Hero', schema: HeroSchema }])],
   controllers: [HeroController],
   providers: [HeroService]
 })
