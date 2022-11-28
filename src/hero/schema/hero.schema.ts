@@ -5,7 +5,7 @@ export type HeroDocument = HydratedDocument<Hero>;
 
 @Schema()
 export class Hero{
-  id: string;
+  _id: string;
 
   @Prop({ required: true, default: "test" })
   name: string;
