@@ -6,7 +6,10 @@ import { validate } from './env.validation';
 import { HeroModule } from './hero/hero.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ validate: validate, expandVariables:true }), HeroModule],
+  imports: [
+    ConfigModule.forRoot({ validate: validate, expandVariables:true }),
+    HeroModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
