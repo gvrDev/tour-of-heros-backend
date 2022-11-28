@@ -9,11 +9,9 @@ export class HeroService {
   constructor(@InjectModel('Hero') private heroModel: Model<HeroDocument>){}
 
   async create(createHeroDto: CreateHeroDto): Promise<Hero> {
-    console.log(`Inside service: ${createHeroDto.name}`);
     const hero = new this.heroModel({
       name: createHeroDto.name
     });
-    console.log(`Inside service: ${hero.id}`);
     return hero.save();
   }
 
